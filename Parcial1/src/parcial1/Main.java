@@ -1,13 +1,14 @@
 
 package parcial1;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-public class RegistroEstudiantes {
+public class Main {
+    
     public static void main(String[] args) {
-        ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        GestorEstudiantes gestor = new GestorEstudiantes();
 
         int opcion;
         do {
@@ -29,7 +30,7 @@ public class RegistroEstudiantes {
                     // Lógica para buscar un estudiante
                     break;
                 case 3:
-                    // Lógica para buscar un estudiante por asignatura
+                    buscarEstudiantesPorAsignatura(scanner, gestor); 
                     break;
                 case 4:
                     // Lógica para mostrar todos los estudiantes
@@ -42,19 +43,21 @@ public class RegistroEstudiantes {
             }
         } while (opcion != 5);
     }
-}
 
-class Estudiante {
-    // Clase para representar a un estudiante
-    private String nombre;
-    private int edad;
-    private String asignatura;
+    private static void buscarEstudiantesPorAsignatura(Scanner scanner, GestorEstudiantes gestor) {
+        System.out.print("Ingrese el nombre de la asignatura a buscar: ");
+        String asignaturaBuscada = scanner.nextLine();
 
-    public Estudiante(String nombre, int edad, String asignatura) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.asignatura = asignatura;
+        List<Estudiante> estudiantesEncontrados = gestor.buscarEstudiantesPorAsignatura(asignaturaBuscada);
+
+        if (!estudiantesEncontrados.isEmpty()) {
+            System.out.println("Estudiantes inscritos en la asignatura '" + asignaturaBuscada + "':");
+            for (Estudiante estudiante : estudiantesEncontrados) {
+                System.out.println(estudiante.toString());
+                System.out.println("----------------------------");
+            }
+        } else {
+            System.out.println("La asignatura '" + asignaturaBuscada + "' no tiene estudiantes inscritos.");
+        }
     }
-
-    // Getters y setters
 }
