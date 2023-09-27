@@ -1,10 +1,14 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package parcial1;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RegistroEstudiantes {
+public class Main {
     public static void main(String[] args) {
         ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -42,19 +46,4 @@ public class RegistroEstudiantes {
             }
         } while (opcion != 5);
     }
-}
-
-class Estudiante {
-    // Clase para representar a un estudiante
-    private String nombre;
-    private int edad;
-    private String asignatura;
-
-    public Estudiante(String nombre, int edad, String asignatura) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.asignatura = asignatura;
-    }
-
-    // Getters y setters
 }
